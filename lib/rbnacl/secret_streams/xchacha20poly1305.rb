@@ -78,7 +78,9 @@ module RbNaCl
 
             self.class.secretstream_xchacha20poly1305_push(state, buf_out, nil, chunk, chunk.bytesize, nil, 0, tag)
 
-            yield buf_out[0, chunk.bytesize + ABYTES]
+            buf_out = buf_out[0, chunk.bytesize + ABYTES] if chunk.bytesize != CHUNK_SIZE
+
+            yield buf_out
           end
 
           nil
@@ -113,7 +115,9 @@ module RbNaCl
 
             check_tag(tag) if io.eof?
 
-            yield buf_out[0, chunk.bytesize - ABYTES]
+            buf_out = buf_out[0, chunk.bytesize - ABYTES] if chunk.bytesize != CHUNK_SIZE
+
+            yield buf_out
           end
 
           nil
