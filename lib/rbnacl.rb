@@ -55,6 +55,12 @@ module RbNaCl
   # Secret Key Encryption (SecretBox): XSalsa20Poly1305
   require "rbnacl/secret_boxes/xsalsa20poly1305"
 
+  # Stream
+  require "rbnacl/streams/chacha20_ietf"
+
+  # Secret Stream Encryption: XChaCha20Poly1305
+  require "rbnacl/secret_streams/xchacha20poly1305"
+
   # Digital Signatures: Ed25519
   require "rbnacl/signatures/ed25519"
   require "rbnacl/signatures/ed25519/signing_key"
@@ -94,6 +100,7 @@ module RbNaCl
   PrivateKey   = Boxes::Curve25519XSalsa20Poly1305::PrivateKey
   PublicKey    = Boxes::Curve25519XSalsa20Poly1305::PublicKey
   SecretBox    = SecretBoxes::XSalsa20Poly1305
+  SecretStream = SecretStreams::XChaCha20Poly1305
   SigningKey   = Signatures::Ed25519::SigningKey
   VerifyKey    = Signatures::Ed25519::VerifyKey
   GroupElement = GroupElements::Curve25519
